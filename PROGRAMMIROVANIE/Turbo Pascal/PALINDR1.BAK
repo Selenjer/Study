@@ -1,0 +1,38 @@
+{$S+}
+program Palindrom;
+ uses Crt;
+  label 1;
+ var a:string;l,t,d:byte;
+procedure P(var b:string;n,k:byte);
+    begin
+     if keypressed then halt;
+      if (k=0)or(k=1)
+       then
+        begin
+         d:=0;
+        exit;
+       end;
+      if b[n]=b[k]
+     then
+     b:=COPY(b,n+1,k-(n+1))
+      else
+       begin
+        d:=1;
+         exit;
+        end;
+       k:=length(b);
+     P(b,n,k);
+    end;
+begin ClrScr;
+ 1:write('Введите строку:');
+  readln(a);
+   l:=1;
+    t:=length(a);
+     if t=0 then
+      goto 1;
+     P(a,l,t);
+    if d=0 then
+   write('-Слово является палиндромом')
+  else
+ write('-Слово не является палиндромом');
+end.

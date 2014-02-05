@@ -1,0 +1,54 @@
+program Crugi;
+uses Crt,graph;
+type Complex=record
+      i,k,x,y:integer;
+             end;
+     Mas=array[1..10] of Complex;
+var b,a,r,j,t:integer;
+    rad:real;
+    z:mas;
+begin
+    clrscr;
+    a:=detect;
+    b:=detect;
+    initGraph(a,b,'c:\bp\bgi');
+    z[1].i:=90;
+    z[2].i:=30;
+    z[3].i:=30;
+    r:=100;
+    z[1].k:=1;
+    z[2].k:=2;
+    z[3].k:=3;
+    repeat
+         for t:=1 to 3 do
+          begin
+              rad:=pi*z[t].i/180;
+              z[t].x:=round(cos(rad)*r);
+              z[t].y:=round(sin(rad)*r);
+          end;
+         for t:=1 to 3 do
+          begin
+              if z[t].k=1 then begin z[t].x:=-1*z[t].x;z[t].y:=-1*z[t].y;z[t].i:=z[t].i-1;end
+              else if z[t].k=2 then begin z[t].x:=-1*z[t].x;z[t].i:=z[t].i+1;end
+              else if z[t].k=3 then z[t].i:=z[t].i-1
+              else if z[t].k=4 then begin z[t].y:=-1*z[t].y;z[t].i:=z[t].i+1;end;
+          end;
+         setcolor(15);
+         line(300+z[1].x,200+z[1].y,300+z[2].x,200+z[2].y);
+         line(300+z[2].x,200+z[2].y,300+z[3].x,200+z[3].y);
+         line(300+z[3].x,200+z[3].y,300+z[1].x,200+z[1].y);
+         delay(500);
+         setcolor(0);
+         line(300+z[1].x,200+z[1].y,300+z[2].x,200+z[2].y);
+         line(300+z[2].x,200+z[2].y,300+z[3].x,200+z[3].y);
+         line(300+z[3].x,200+z[3].y,300+z[1].x,200+z[1].y);
+         for t:=1 to 3 do
+          begin
+              if (z[t].k=1)and(z[t].i=0) then z[t].k:=2
+              else if (z[t].k=2)and(z[t].i=90) then z[t].k:=3
+              else if (z[t].k=3)and(z[t].i=0) then z[t].k:=4
+              else if (z[t].k=4)and(z[t].i=90) then z[t].k:=1;
+          end;
+     until KeyPressed;
+     closeGraph;
+end.

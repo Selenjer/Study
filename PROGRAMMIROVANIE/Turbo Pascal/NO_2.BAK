@@ -1,0 +1,35 @@
+program N222;
+uses Crt;
+label 1;
+var a,b,c,d,e:string;
+    i,k:byte;
+begin
+    ClrScr;
+    1:write('Введите строку:');
+    readln(a);
+    if Length(a)>20 then
+     begin
+       writeln('Не вводите больше 20.');
+       goto 1;
+     end;
+    b:='begin';c:='end';d:='{';e:='}';
+    for i:=1 to 20 do
+     begin
+         k:=pos(d,a);
+         if k>0 then
+          begin
+              delete(a,k,1);
+              insert(b,a,k);
+          end;
+     end;
+    for i:=1 to 20 do
+     begin
+         k:=pos(e,a);
+         if k>0 then
+          begin
+              delete(a,k,1);
+              insert(c,a,k);
+          end;
+     end;
+    write(a);
+end.

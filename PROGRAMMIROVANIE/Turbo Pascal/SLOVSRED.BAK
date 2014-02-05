@@ -1,0 +1,7 @@
+Program N1;
+uses crt;
+var s:string;
+    l:integer;
+begin
+    clrscr;
+    gotoxy;

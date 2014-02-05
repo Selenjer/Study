@@ -1,0 +1,24 @@
+Program children_v_krug;
+uses Crt;
+var n,m,k,d:byte;
+    sh:array[1..250] of byte;
+begin
+    clrscr;
+    write('n,m=');
+    readln(n,m);
+    for k:=1 to n do
+     sh[k]:=k;
+    k:=m mod n;
+    if k=0 then k:=n;
+    d:=k;
+    repeat
+         writeln(d);
+         sh[d]:=0;
+         d:=d+k;
+         d:=d mod n;
+         if d=0 then d:=n
+    until sh[d]=0;
+end.
+
+
+

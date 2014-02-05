@@ -1,0 +1,35 @@
+Program Obnulenie;
+uses Crt;
+var a,s:array[1..100,1..100] of byte;
+    m,n,i,j,p:integer;
+begin
+    Clrscr;
+    randomize;
+    write('"Ogranicheniya":');
+    readln(m,n);
+    for i:=1 to m do
+    begin
+     for j:=1 to n do
+      begin
+          a[i,j]:=random(20);
+          write(a[i,j]:4);
+      end;
+     writeln;
+    end;
+    s:=a;
+    Readkey;
+    for i:=1 to m do
+     for j:=1 to n do
+      begin
+          if a[i,j]=0 then begin for p:=1 to n do s[i,p]:=0;for p:=1 to m do s[p,j]:=0;end;
+      end;
+    writeln('Itog:');
+    writeln;
+    for i:=1 to m do
+     begin
+     for j:=1 to n do
+      write(s[i,j]:4);
+     writeln;
+     end;
+    Readkey;
+end.

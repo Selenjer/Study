@@ -1,0 +1,33 @@
+program Crugi;
+uses Crt,graph;
+label 1;
+var i,b,a,r,x,y:integer;
+procedure MN(r1,i1,x1,y1,k:integer);
+  var x,y:integer;
+      rad:real;
+  begin
+      if k=10 then exit
+      else if k<10 then begin k:=k+1;
+           rad:=pi*i1/180;
+           x:=round(cos(rad)*r1);
+           y:=round(sin(rad)*r1);
+           circle(x1+x,y1+y,10);
+           r1:=round(i1/2);
+           MN(r1,i1,x1+x,y1+y,k);
+  end;
+begin
+    clrscr;
+    a:=detect;
+    b:=detect;
+    initGraph(a,b,'c:\bp\bgi');
+    r:=100;
+    i:=0;
+    repeat
+         setcolor(15);
+         MN(100,i,300,200,1);
+         setcolor(0);
+         MN(100,i,300,200,1);
+         i:=i+1;
+    until KeyPressed;
+     closeGraph;
+end.

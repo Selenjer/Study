@@ -1,0 +1,35 @@
+Program children_v_krug;
+uses Crt;
+var n,m,k,d,i:byte;
+    sh:array[1..250] of byte;
+    f:text;
+begin
+    clrscr;
+    assign(f,'c:\pascal\t\proba1.txt');
+    rewrite(f);
+    write('n,m=');
+    readln(n,m);
+    for k:=1 to n do
+     sh[k]:=k;
+    k:=m mod n;
+    if k=0 then k:=n;
+    d:=k;
+    writeln(sh[d]);
+    writeln(f,sh[d]);
+    for i:=d+1 to n do
+     sh[i-1]:=sh[i];
+    repeat
+         n:=n-1;
+         k:=m mod n;
+         if k=0 then k:=n;
+         d:=d+k-1;
+         d:=d mod n;
+         if d=0 then begin d:=n;writeln(sh[d]);writeln(f,sh[d]);end
+         else begin  writeln(sh[d]);writeln(f,sh[d]);for i:=d+1 to n do sh[i-1]:=sh[i];end;
+    until n<2;
+    close(f);
+    readkey;
+end.
+
+
+

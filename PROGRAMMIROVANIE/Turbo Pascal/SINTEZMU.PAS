@@ -1,0 +1,58 @@
+program Man;
+uses Crt,graph;
+label 1;
+var r,x,y,b,a:integer;
+begin
+    a:=detect;
+    b:=detect;
+    initGraph(a,b,'c:\bp\bgi');
+    Readkey;
+    repeat
+         1:readkey;
+         case readkey of
+            'w':begin
+                    Sound(131);
+                    delay(10000);
+                    nosound;
+                    goto 1;
+                end;
+            'e':begin
+                    Sound(147);
+                    delay(10000);
+                    nosound;
+                    goto 1;
+                end;
+            'r':begin
+                    Sound(165);
+                    delay(10000);
+                    nosound;
+                    goto 1;
+                end;
+            't':begin
+                    Sound(175);
+                    delay(10000);
+                    nosound;
+                    goto 1;
+                end;
+            'y':begin
+                    Sound(196);
+                    delay(10000);
+                    nosound;
+                    goto 1;
+                end;
+            'u':begin
+                    Sound(220);
+                    delay(10000);
+                    nosound;
+                    goto 1;
+                end;
+            'i':begin
+                    Sound(247);
+                    delay(10000);
+                    nosound;
+                    goto 1;
+                end;
+            end;
+    until readkey=#13;
+    CloseGraph;
+end.
